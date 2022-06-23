@@ -1,0 +1,26 @@
+{
+  "name": "@libs/utility",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "author": "Elias Mawa <elias@emawa.io>",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "clean": "echo 'clean @libs/utility' && rm -rf ./dist**",
+    "watch": "echo 'watching @libs/utility' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "echo 'building @libs/utility' && tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "cookies-next": "^2.0.4",
+    "uid": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+
+    /* typechecking options */
+    "strict": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": false,
+
+    /* module resolution options */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+
+    "jsx": "preserve",
+    "checkJs": false,
+
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "types": ["lodash", "node", "jest"],
+    "baseUrl": "./packages"
+  },
+  "exclude": ["node_modules/", "**/spec.ts"]
+}

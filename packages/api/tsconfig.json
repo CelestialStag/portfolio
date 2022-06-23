@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "baseUrl": ".",
+    "declaration": true,
+    "outDir": "./dist",
+    "paths": {
+      "@backend/controller": ["src/controller"],
+      "@backend/controller/*": ["src/controller/*"],
+      "@backend/middleware": ["src/middleware"],
+      "@backend/middleware/*": ["src/middleware/*"]
+    },
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths"
+      }
+    ]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/*.ts", "src/*.tsx"],
+  "exclude": ["../../node_modules/", "next-env.d.ts", "../../node_modules/next/", "../../node_modules/react/"]
+}

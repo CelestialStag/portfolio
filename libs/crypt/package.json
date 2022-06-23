@@ -1,0 +1,21 @@
+{
+  "name": "@libs/crypt",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "author": "Elias Mawa <elias@emawa.io>",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "clean": "echo 'clean @libs/crypt' && rm -rf ./dist**",
+    "watch": "echo 'watching @libs/crypt' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "echo 'building @libs/crypt' && tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2020",
+    "sourceMap": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    /* typechecking options */
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    /* module resolution options */
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "checkJs": false,
+    "types": ["node", "react"],
+    "baseUrl": "./src",
+    "paths": {
+      "@pages": ["pages/"],
+      "@pages/*": ["pages/*"],
+      "@components": ["components/"],
+      "@components/*": ["components/*"],
+      "@stores": ["stores/"],
+      "@stores/*": ["stores/*"],
+      "@themes": ["themes/"],
+      "@themes/*": ["themes/*"],
+      "@hooks": ["hooks/"],
+      "@hooks/*": ["hooks/*"],
+      "@styles": ["styles/"],
+      "@styles/*": ["styles/*"],
+      "@data": ["data/"],
+      "@data/*": ["data/*"]
+    },
+    "incremental": true,
+    "allowJs": false,
+    "noEmit": true
+  },
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/*.ts", "src/*.tsx"],
+  "exclude": ["node_modules/", "**/spec.ts"]
+}
