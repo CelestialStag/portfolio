@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 
-import { ServerConfig } from '@libs/config';
+import { api_config } from '@lib/config';
 
-const saltRounds = ServerConfig.SALT_ROUNDS || 10;
+const saltRounds = api_config.salt_rounds || 12;
 
 /**
  * Salt the hash

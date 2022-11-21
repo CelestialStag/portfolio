@@ -1,0 +1,19 @@
+{
+  "name": "@lib/cookies",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "author": "Elias Mawa <elias@emawa.io>",
+  "private": true,
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "scripts": {
+    "clean": "echo 'clean @lib/cookies' && rm -rf ./dist** ||:",
+    "watch": "echo 'watching @lib/cookies' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "NODE_ENV=production && yarn build:cjs",
+    "build:cjs": "NODE_ENV=production && echo 'building @lib/cookies:cjs' && tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "cookies-next": "^2.0.4"
+  }
+}

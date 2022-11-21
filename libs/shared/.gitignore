@@ -1,0 +1,11 @@
+/src/data/
+# !/src/data/authentication.data.ts
+!/src/data/brand.data.ts
+!/src/data/category.data.ts
+!/src/data/delivery-faq.data.ts
+!/src/data/delivery-method.data.ts
+!/src/data/location.data.ts
+!/src/data/role.data.ts
+!/src/data/store.data.ts
+!/src/data/tag.data.ts
+!/src/data/tax.data.ts

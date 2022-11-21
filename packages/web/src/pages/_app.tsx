@@ -1,30 +1,29 @@
 import App, { AppContext, AppProps } from 'next/app';
+import { ChakraProvider, createCookieStorageManager } from '@chakra-ui/react';
+import Head from 'next/head';
+import { StrictMode } from 'react';
+import { baseTheme } from '@lib/themes';
+import { cookieStorage } from '@lib/cookies';
 
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-
-import { FetchProvider } from '@libs/hooks';
-import { StoreProvider } from '@libs/stores';
-import { cookieStorage } from '@libs/utility';
-import { ThemeProvider, ThemeType } from '@libs/themes';
+import { StoreProvider } from '@stores/core';
 
 import '../styles/global.scss';
 
-const queryClient = new QueryClient();
-
 const MyApp = (context: AppProps & { cookies: string; state: string }) => {
   const { Component, pageProps, cookies, state } = context;
+  const manager = createCookieStorageManager('theme', cookies);
   return (
-    <StoreProvider>
-      <FetchProvider>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <ThemeProvider state={JSON.parse(state)?.theme as ThemeType} cookies={cookies}>
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </Hydrate>
-        </QueryClientProvider>
-      </FetchProvider>
-    </StoreProvider>
+    <StrictMode>
+      <StoreProvider cookies={{ ...JSON.parse(state) }}>
+        <ChakraProvider theme={baseTheme} colorModeManager={manager}>
+          <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            {/* <meta name="viewport" content="initial-scale=1.0, width=device-width"></meta> */}
+          </Head>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </StoreProvider>
+    </StrictMode>
   );
 };
 

@@ -1,22 +1,25 @@
-import React from 'react';
-
 import { NextPage } from 'next';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
 
-import { DefaultLayout } from '@components/layout';
-import { Heading, Text } from '@libs/components';
+import { Container, Heading, Text } from '@lib/components';
+import { WebLayout } from '@components/layout';
 
-type ErrorPageProps = {
-  statusCode: number;
-  message: string;
+type ErrPageProps = {
+  statusCode?: number;
+  message?: string;
 };
-const Error: NextPage<ErrorPageProps> = ({ statusCode, message }: ErrorPageProps) => {
+
+export const ErrPage: NextPage<ErrPageProps> = ({ statusCode = 500, message = 'Server Error' }: ErrPageProps) => {
   return (
-    <DefaultLayout>
-      <div className="flex grow flex-col place-items-center">
-        <Heading style={{ size: 'lg' }}>Error {statusCode}</Heading>
-        <Text>{message}</Text>
-      </div>
-    </DefaultLayout>
+    <WebLayout>
+      <Container textAlign="center">
+        <Heading>Error {statusCode}</Heading>
+        <Text>
+          <Text>{message}</Text>
+        </Text>
+      </Container>
+    </WebLayout>
   );
 };
 
@@ -26,4 +29,4 @@ export const getServerSideProps = ({ res, err }) => {
   return { props: { statusCode, message } };
 };
 
-export default Error;
+export default observer(ErrPage);

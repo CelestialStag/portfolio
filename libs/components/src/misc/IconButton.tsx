@@ -1,54 +1,20 @@
-import { forwardRef } from 'react';
+import { IconButton as ChakraIconButton, IconButtonProps as ChakraIconButtonProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef } from 'react';
 
-import styled from '@emotion/styled';
-import { withTheme } from '@emotion/react';
+import { IconButtonConfig } from '@lib/themes';
 
-import { Span, SpanProps, SpanStyle } from '../core';
-
-type IconButtonStyle = SpanStyle & {
-  // colorScheme?: string;
+export type IconButtonProps = Partial<ChakraIconButtonProps> & {
+  children?: ReactNode;
 };
 
-export type IconButtonProps = SpanProps & {
-  style?: Partial<IconButtonStyle>;
-  href?: string;
-  type?: 'button' | 'submit' | 'reset';
-};
+const IIconButtonComponent = chakra<typeof ChakraIconButton, IconButtonProps>(ChakraIconButton);
 
-const IconButton_ = (
-  { children, className, css, as, theme, style, href, type }: IconButtonProps,
-  ref: React.Ref<HTMLBaseElement>,
-) => {
-  const IconButton = styled(Span)<IconButtonProps>(({ theme, style }) => ({
-    paddingLeft: style?.px ? theme.space[style.px] : theme.space['md'],
-    paddingRight: style?.px ? theme.space[style?.px] : theme.space['md'],
-    paddingTop: style?.py ? theme.space[style?.py] : theme.space['md'],
-    paddingBottom: style?.py ? theme.space[style?.py] : theme.space['md'],
-
-    borderWidth: style?.borderWidth ? style?.borderWidth : style?.variant === 'ghost' ? undefined : 1,
-    borderRadius: style?.borderRadius ? theme.radius[style.borderRadius] : theme.radius['md'],
-    // borderColor: style?.borderColor ?? theme.colors.primary.base,
-
-    ':hover': {
-      filter: 'opacity(0.85)',
-    },
-  }));
+const IIconButton = (props: IconButtonProps, ref: Ref<Element>) => {
   return (
-    <IconButton
-      {...{
-        ref,
-        as: as ?? 'button',
-        className: `flex flex-row space-x-8 w-full${className ? ' ' + className : ''}`,
-        css,
-        style,
-        theme,
-        href,
-        type: type ?? 'button',
-      }}
-    >
-      {children}
-    </IconButton>
+    <IIconButtonComponent ref={ref} {...props} styleConfig={IconButtonConfig}>
+      {props.children}
+    </IIconButtonComponent>
   );
 };
 
-export const IconButton = withTheme(forwardRef(IconButton_));
+export const IconButton = forwardRef(IIconButton);

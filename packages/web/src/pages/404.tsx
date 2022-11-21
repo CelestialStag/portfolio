@@ -1,18 +1,18 @@
+import { NextPage } from 'next';
 import React from 'react';
 
-import { NextPage } from 'next';
+import { Container, Heading, Text } from '@lib/components';
 
-import { DefaultLayout } from '@components/layout';
-import { Heading, Text } from '@libs/components';
+import { WebLayout } from '@components/layout';
 
 const Error: NextPage = () => {
   return (
-    <DefaultLayout>
-      <div className="flex grow flex-col place-items-center">
-        <Heading style={{ size: 'lg' }}>Error 404</Heading>
-        <Text>not found!</Text>
-      </div>
-    </DefaultLayout>
+    <WebLayout>
+      <Container textAlign="center">
+        <Heading>Error 404</Heading>
+        <Text>Page Not Found!</Text>
+      </Container>
+    </WebLayout>
   );
 };
 

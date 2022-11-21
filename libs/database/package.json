@@ -1,18 +1,24 @@
 {
-  "name": "@libs/database",
+  "name": "@lib/database",
   "version": "0.0.1",
   "license": "GPL-3.0",
-  "author": "Elias Mawa <elias@emawa.io>",
   "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
   "scripts": {
-    "clean": "echo 'clean @libs/database' && rm -rf ./dist**",
-    "watch": "echo 'watching @libs/database' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
-    "build": "echo 'building @libs/database' && tsc",
+    "clean": "echo 'clean @lib/database' && rm -rf ./dist** ||:",
+    "watch": "echo 'watching @lib/database' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "NODE_ENV=production && yarn build:cjs",
+    "build:cjs": "NODE_ENV=production && echo 'building @lib/database:cjs' && tsc",
     "test": "jest"
+  },
+  "dependencies": {
+    "@lib/config": "^0.0.1",
+    "@lib/shared": "^0.0.1",
+    "@prisma/client": "latest",
+    "ioredis": "^5.0.4",
+    "mongoose": "~6.3.1",
+    "mysql2": "^2.3.3",
+    "redis": "^4.0.6"
   }
 }

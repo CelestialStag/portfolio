@@ -1,42 +1,19 @@
-import { forwardRef, useMemo } from 'react';
+import { BoxProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef } from 'react';
 
-import styled from '@emotion/styled';
-import { withTheme } from '@emotion/react';
-
-import { Box, BoxProps, BoxStyle } from './Box';
-
-export type SpanStyle = BoxStyle & {
-  // nothing
+export type SpanProps = Partial<BoxProps> & {
+  children?: ReactNode;
 };
 
-export type SpanProps = BoxProps & {
-  style?: Partial<SpanStyle>;
-};
+const ISpanComponent = chakra<'span', SpanProps>('span');
 
-const SpanElement = (props: SpanProps, ref: React.Ref<HTMLBaseElement>) => {
-  const { children, className, css, as, theme, style } = props;
-  const ISpan = useMemo(
-    () =>
-      styled(Box)<SpanProps>(() => ({
-        flexBasis: 0,
-      })),
-    [],
-  );
+const ISpan = (props: SpanProps, ref: Ref<HTMLSpanElement>) => {
+  const { children } = props;
   return (
-    <ISpan
-      {...props}
-      {...{
-        ref,
-        as: as ?? 'span',
-        className,
-        css,
-        style,
-        theme,
-      }}
-    >
+    <ISpanComponent ref={ref} display="inline-flex" fontFamily="Fira Sans" {...props}>
       {children}
-    </ISpan>
+    </ISpanComponent>
   );
 };
 
-export const Span = withTheme(forwardRef(SpanElement));
+export const Span = forwardRef(ISpan);

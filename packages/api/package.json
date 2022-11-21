@@ -1,31 +1,36 @@
 {
-  "name": "api",
+  "name": "@package/api",
   "version": "0.0.1",
   "license": "GPL-3.0",
-  "description": "a really cool back-end",
+  "description": "back-end for my portfolio",
   "author": "Elias Mawa <elias@emawa.io>",
   "private": true,
-  "homepage": "https://github.com/theluckyegg/next-koa-monorepo",
+  "homepage": "https://github.com/theluckyegg/portfolio",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theluckyegg/next-koa-monorepo.git"
-  },
-  "main": "src/index.ts",
-  "scripts": {
-    "lint": "eslint . --ext .js,.ts",
-    "prettier": "yarn prettier --write",
-    "test": "jest",
-    "watch": "nodemon --watch '../api/src' --watch '../web/src' --watch '../../libs/components/src' --watch '../../libs/config/src' --watch '../../libs/crypt/src' --watch '../../libs/database/src' --watch '../../libs/shared/src' --watch '../../libs/tool/src' --watch '../../libs/utility/src' -e ts,tsx --exec ts-node -r tsconfig-paths/register -r ts-node ./src/server.ts",
-    "serve": "yarn watch",
-    "build": "echo 'building api' && ttsc",
-    "start": "echo 'starting api' && node ./dist/server.js",
-    "clean": "echo 'clean api' && rm -rf ./dist**"
+    "url": "git+https://github.com/theluckyegg/portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/theluckyegg/next-koa-monorepo/issues"
+    "url": "https://github.com/theluckyegg/portfolio/issues"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "echo 'linting @package/api' && eslint . --ext .js,.ts",
+    "prettier": "yarn prettier --write",
+    "clean": "echo 'cleaning @package/api' && rm -rf ./dist** ||:",
+    "watch": "nodemon --watch '../api/src' --watch '../../lib' --ignore '*.d.ts' -e ts,js --delay 20ms --exec ts-node -r tsconfig-paths/register -r ts-node ./src/server.ts",
+    "serve": "echo 'serving @package/api' && yarn watch",
+    "build": "NODE_ENV=production && echo 'building @package/api' && yarn build:cjs",
+    "build:cjs": "NODE_ENV=production && ttsc",
+    "start": "NODE_ENV=production && echo 'starting @package/api' && node ./dist/cjs/server.js"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
+    "@lib/config": "^0.0.1",
+    "@lib/crypt": "^0.0.1",
+    "@lib/services": "^0.0.1",
+    "@lib/shared": "^0.0.1",
+    "@lib/utility": "^0.0.1",
     "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/koa": "^2.13.4",
@@ -36,15 +41,20 @@
     "@types/koa-session": "^5.10.4",
     "@types/koa-websocket": "^5.0.7",
     "@types/koa__cors": "^3.0.3",
-    "file-type": "^16.5.3",
+    "date-fns": "^2.28.0",
+    "date-fns-tz": "^1.3.6",
+    "formidable": "^2.0.1",
     "koa": "^2.13.3",
     "koa-body": "^4.2.0",
-    "koa-bodyparser": "^4.3.0",
     "koa-json": "^2.0.2",
     "koa-jwt": "^4.0.3",
     "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
     "koa-session": "^6.2.0",
-    "koa-websocket": "^6.0.0"
+    "koa-websocket": "^6.0.0",
+    "meilisearch": "^0.25.1"
+  },
+  "devDependencies": {
+    "@types/formidable": "^2"
   }
 }

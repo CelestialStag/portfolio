@@ -1,18 +1,16 @@
 {
-  "name": "@libs/config",
+  "name": "@lib/config",
   "version": "0.0.1",
   "license": "GPL-3.0",
   "author": "Elias Mawa <elias@emawa.io>",
   "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
   "scripts": {
-    "clean": "echo 'clean @libs/config' && rm -rf ./dist**",
-    "watch": "echo 'watching @libs/config' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
-    "build": "echo 'building @libs/config' && tsc",
+    "clean": "echo 'clean @lib/config' && rm -rf ./dist** ||:",
+    "watch": "echo 'watching @lib/config' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "NODE_ENV=production && yarn build:cjs",
+    "build:cjs": "NODE_ENV=production && echo 'building @lib/config:cjs' && tsc",
     "test": "jest"
   }
 }

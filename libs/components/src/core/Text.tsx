@@ -1,38 +1,24 @@
-import { forwardRef } from 'react';
+import { BoxProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef } from 'react';
 
-import styled from '@emotion/styled';
-import { withTheme } from '@emotion/react';
+import { Box } from '.';
 
-import { Box, BoxProps, BoxStyle } from './Box';
-
-export type TextStyle = BoxStyle & {
-  // nothing
+export type TextProps = Partial<BoxProps> & {
+  children?: ReactNode;
+  subText?: string;
 };
 
-export type TextProps = BoxProps & {
-  style?: Partial<TextStyle>;
-};
+const ITextComponent = chakra<typeof Box, TextProps>(Box, {
+  baseStyle: {},
+});
 
-const TextElement = (props: TextProps, ref: React.Ref<HTMLBaseElement>) => {
-  const { children, className, css, as, theme, style } = props;
-  const Text = styled(Box)<TextProps>(() => ({
-    flexBasis: 0,
-  }));
+const IText = (props: TextProps, ref: Ref<HTMLElement>) => {
+  const { children } = props;
   return (
-    <Text
-      {...props}
-      {...{
-        ref,
-        as: as ?? 'p',
-        className,
-        css,
-        style,
-        theme,
-      }}
-    >
+    <ITextComponent ref={ref} fontFamily="Sora" {...props}>
       {children}
-    </Text>
+    </ITextComponent>
   );
 };
 
-export const Text = withTheme(forwardRef(TextElement));
+export const Text = forwardRef(IText);

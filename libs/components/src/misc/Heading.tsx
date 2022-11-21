@@ -1,36 +1,21 @@
-// TODO: Add forwardRef
-import styled from '@emotion/styled';
-import { withTheme } from '@emotion/react';
+import { Heading as CHeading, HeadingProps as CHeadingProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef } from 'react';
 
-import { Box, BoxProps, BoxStyle } from '../core';
+import { HeadingConfig } from '@lib/themes';
 
-type HeadingStyle = BoxStyle & {
-  // nothing
+export type HeadingProps = Partial<CHeadingProps> & {
+  children?: ReactNode;
 };
 
-export type HeadingProps = BoxProps & {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  style?: Partial<HeadingStyle>;
-};
+const IHeadingComponent = chakra<typeof CHeading, HeadingProps>(CHeading);
 
-const Heading_ = ({ children, className, css, as, theme, style }: HeadingProps) => {
-  const Heading = styled(Box)<HeadingProps>(({ theme }) => ({
-    fontFamily: `'Secular One', sans-serif`,
-    fontSize: style?.size ? theme.fontSizes[style.size] : theme.fontSizes['xs'],
-  }));
+const IHeading = (props: HeadingProps, ref: Ref<Element>) => {
+  const { children } = props;
   return (
-    <Heading
-      {...{
-        as: as ?? 'h1',
-        className: `mb-4${className ? ' ' + className : ''}`,
-        css,
-        style,
-        theme,
-      }}
-    >
+    <IHeadingComponent ref={ref} {...props} styleConfig={HeadingConfig}>
       {children}
-    </Heading>
+    </IHeadingComponent>
   );
 };
 
-export const Heading = withTheme(Heading_);
+export const Heading = forwardRef(IHeading);

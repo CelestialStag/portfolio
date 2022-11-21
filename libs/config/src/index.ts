@@ -1,2 +1,4 @@
-export { server_config as ServerConfig } from './server.config';
-export { client_config as ClientConfig } from './client.config';
+export * from './base.config';
+export * from './api.config';
+export * from './secure.config';
+export * from './web.config';

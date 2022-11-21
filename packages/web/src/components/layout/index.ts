@@ -1,2 +1,2 @@
-export * from './DefaultLayout';
-export * from './Footer';
+export * from './WebLayout';
+export * from './WebFooter';

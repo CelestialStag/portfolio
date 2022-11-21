@@ -14,8 +14,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'jest.config.ts'],
   rules: {
-    '@next/next/no-html-link-for-pages': ['error', `${__dirname}/packages/web/src/`],
-    // 'no-html-link-for-pages': 'error',
+    '@next/next/no-html-link-for-pages': ['error', `${__dirname}/packages/shop/src/`],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': [
@@ -30,7 +29,7 @@ module.exports = {
         ignoreCase: false,
         ignoreDeclarationSort: false,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none'],
+        memberSyntaxSortOrder: ['multiple', 'single', 'all', 'none'],
         allowSeparatedGroups: true,
       },
     ],

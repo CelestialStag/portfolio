@@ -1,55 +1,23 @@
-import { forwardRef } from 'react';
+import { Button as ChakraButton, ButtonProps as ChakraButtonProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef } from 'react';
+import _ from 'lodash';
 
-import styled from '@emotion/styled';
-import { withTheme } from '@emotion/react';
+import { ButtonConfig } from '@lib/themes';
 
-import { Span, SpanProps, SpanStyle } from '../core';
-
-type ButtonStyle = SpanStyle & {
-  // colorScheme?: string;
+export type ButtonProps = Partial<ChakraButtonProps> & {
+  children?: ReactNode;
 };
 
-export type ButtonProps = SpanProps & {
-  style?: Partial<ButtonStyle>;
-  href?: string;
-  type?: 'button' | 'submit' | 'reset';
-};
+const IButtonComponent = chakra<typeof ChakraButton, ButtonProps>(ChakraButton);
 
-const Button_ = (
-  { children, className, css, as, theme, style, href, type, onClick }: ButtonProps,
-  ref: React.Ref<HTMLBaseElement>,
-) => {
-  const Button = styled(Span)<ButtonProps>(({ theme, style }) => ({
-    paddingLeft: style?.px ? theme.space[style.px] : theme.space['md'],
-    paddingRight: style?.px ? theme.space[style?.px] : theme.space['md'],
-    paddingTop: style?.py ? theme.space[style?.py] : theme.space['sm'],
-    paddingBottom: style?.py ? theme.space[style?.py] : theme.space['sm'],
-
-    borderWidth: style?.borderWidth ? style?.borderWidth : style?.variant === 'ghost' ? undefined : 1,
-    borderRadius: style?.borderRadius ? theme.radius[style.borderRadius] : theme.radius['md'],
-    // borderColor: style?.borderColor ?? theme.colors.primary.base,
-    ':hover': {
-      filter: 'opacity(0.85)',
-    },
-  }));
-  console.log(onClick);
-
+const IButton = (props: ButtonProps, ref: Ref<Element>) => {
+  const { children } = props;
+  const button_text = typeof children === 'string' ? _.upperCase(children) : children;
   return (
-    <Button
-      {...{
-        ref,
-        as: as ?? 'button',
-        className,
-        css,
-        style,
-        theme,
-        href,
-        type: type ?? 'button',
-      }}
-    >
-      {children}
-    </Button>
+    <IButtonComponent ref={ref} {...props} styleConfig={ButtonConfig}>
+      {button_text === '' ? children : button_text}
+    </IButtonComponent>
   );
 };
 
-export const Button = withTheme(forwardRef(Button_));
+export const Button = forwardRef(IButton);

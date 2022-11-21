@@ -1,33 +1,33 @@
 {
-  "name": "@libs/stores",
+  "name": "@lib/stores",
   "version": "0.0.1",
   "license": "GPL-3.0",
   "author": "Elias Mawa <elias@emawa.io>",
   "private": true,
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
   "scripts": {
-    "clean": "echo 'clean @libs/stores' && rm -rf ./dist**",
-    "watch": "echo 'watching @libs/stores' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
-    "build": "echo 'building @libs/stores' && tsc",
+    "clean": "echo 'clean @lib/stores' && rm -rf ./dist** ||:",
+    "watch": "echo 'watching @lib/stores' && nodemon --watch 'src/' -e ts,tsx --exec yarn build",
+    "build": "NODE_ENV=production && yarn build:cjs",
+    "build:cjs": "NODE_ENV=production && echo 'building @lib/stores:cjs' && tsc",
     "test": "jest"
   },
   "dependencies": {
-    "immer": "^9.0.12",
-    "next": "^12.1.0",
-    "react": "17.0.2",
-    "react-dom": "^17.0.2",
-    "recoil": "^0.6.1",
-    "zustand": "^3.7.1"
+    "@lib/cookies": "^0.0.1",
+    "@lib/hooks": "^0.0.1",
+    "@lib/utility": "^0.0.1",
+    "@lib/x-fetch": "^0.0.1",
+    "mobx": "^6.5.0",
+    "mobx-persist-store": "^1.0.6",
+    "mobx-react-lite": "^3.3.0",
+    "mobx-utils": "^6.0.5",
+    "next": "^12.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react-dom": "^17.0.2",
-    "autoprefixer": "^10.4.2",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^12.0.10"
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^17.0.2"
   }
 }

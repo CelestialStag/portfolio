@@ -1,53 +1,64 @@
-import { forwardRef } from 'react';
+import { Link as CLink, LinkProps as CLinkProps, chakra } from '@chakra-ui/react';
+import { ReactNode, Ref, forwardRef, useEffect, useState } from 'react';
+import NLink from 'next/link';
+import { omit } from 'lodash';
 
-import styled from '@emotion/styled';
+import { AnchorConfig } from '@lib/themes';
 import { useRouter } from 'next/router';
 
-import { withTheme } from '@emotion/react';
-import { Text, TextProps, TextStyle } from '../core';
-// import { Text, TextProps, TextStyle } from '@libs/components';
-
-type AnchorStyle = TextStyle & {
-  // nothing
+export type AnchorProps = Partial<CLinkProps> & {
+  children?: ReactNode;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  isReactive?: boolean;
 };
 
-export type AnchorProps = TextProps & {
-  style?: Partial<AnchorStyle>;
-  href?: string;
-};
+const IAnchorComponent = chakra<typeof CLink, AnchorProps>(CLink);
 
-const Anchor_ = (
-  { children, className, css, as, theme, style, href, onClick }: AnchorProps,
-  ref: React.Ref<HTMLBaseElement>,
-) => {
+const IAnchor = (props: AnchorProps, ref: Ref<Element>) => {
   const router = useRouter();
-  const Anchor = styled(Text)<AnchorProps>(() => ({
-    color: router.route === href ? theme.colors.alt.dark : undefined,
-    ':hover': {
-      filter: router.route === href ? undefined : 'opacity(0.80)',
-    },
-  }));
+  const { children, href: link, isLoading, isDisabled, isReactive } = props;
+  const onClick = (event) => {
+    if (link && !isDisabled && !isLoading) {
+      router.replace(link, undefined, { shallow: true });
+      if (props.onClick) props.onClick(event);
+    }
+  };
+  const [href, setHref] = useState<string | null>(link ?? null);
+
+  useEffect(() => {
+    if (link) setHref(link);
+  }, [link]);
+
+  const isDisabledLink = router.asPath == props.href || props.isDisabled;
+
   return (
-    <Anchor
-      {...{
-        ref,
-        as: as ?? 'a',
-        className,
-        css,
-        style,
-        theme,
-        href: href ?? '',
-      }}
-      onClick={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        if (href && router.route !== href) router.push(href);
-        onClick && onClick(event);
-      }}
+    <NLink
+      href={
+        typeof window === 'undefined' ? (isDisabled ? '' : href ?? '') : isDisabledLink ? router.asPath : href ?? ''
+      }
+      passHref={isDisabledLink ? false : true}
     >
-      {children}
-    </Anchor>
+      <IAnchorComponent
+        ref={ref}
+        {...omit(props, ['isDisabled'])}
+        onClick={onClick}
+        cursor={
+          // not active && reactive
+          props.cursor ?? ((isReactive && (isDisabledLink || !href)) || isLoading)
+            ? 'not-allowed'
+            : // not active
+            !href
+            ? 'default'
+            : 'pointer'
+        }
+        opacity={props.opacity ?? ((isReactive && (isDisabledLink || !href)) || isLoading ? 0.4 : 1)}
+        styleConfig={AnchorConfig}
+      >
+        {children}
+      </IAnchorComponent>
+    </NLink>
   );
 };
 
-export const Anchor = withTheme(forwardRef(Anchor_));
+export const Anchor = forwardRef(IAnchor);

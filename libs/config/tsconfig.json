@@ -1,11 +1,14 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "es6",
     "module": "commonjs",
-    "target": "es2015",
+    "noEmit": false,
     "declaration": true,
-    "outDir": "./dist"
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "outDir": "./dist/cjs"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/", "**/spec.ts"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules/"]
 }
