@@ -14,7 +14,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'jest.config.ts'],
   rules: {
-    '@next/next/no-html-link-for-pages': ['error', `${__dirname}/packages/shop/src/`],
+    '@next/next/no-html-link-for-pages': ['error', `${__dirname}/packages/web/src/`],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': [

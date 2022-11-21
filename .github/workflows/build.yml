@@ -1,10 +1,19 @@
 name: build
 
+env:
+  MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
+  MONGO_ROOT_CONNECTION_STRING: ${{ secrets.MONGO_ROOT_CONNECTION_STRING }}
+  MONGO_CONNECTION_STRMYSQL_CONNECTION_STRINGING: ${{ secrets.MYSQL_CONNECTION_STRING }}
+  MYSQL_ROOT_CONNECTION_STRING: ${{ secrets.MYSQL_ROOT_CONNECTION_STRING }}
+  MEILISEARCH_HOST: ${{ secrets.MEILISEARCH_QA_HOST }}
+  MEILISEARCH_PUBLIC_KEY: ${{ secrets.MEILISEARCH_QA_PUBLIC_KEY }}
+  MEILISEARCH_PRIVATE_KEY: ${{ secrets.MEILISEARCH_QA_PRIVATE_KEY }}
+
 on:
   push:
-    branches: [main, qa]
+    branches: [main, qa, production]
   pull_request:
-    branches: [main, qa]
+    branches: [main, qa, production]
 
 jobs:
   build:
@@ -13,35 +22,31 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [16.x]
-
     runs-on: ${{ matrix.os }}
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
+          key: ${{ runner.os }}-modules-v1-${{ hashFiles('**/yarn.lock') }}
       - name: Install Packages
-        run: yarn install
+        run: yarn install --immutable
 
-      - name: Lint Project
-        run: yarn lint
+      # lint
+      - name: Lint Libraries
+        run: yarn lint:libs
+      - name: Lint API
+        run: yarn lint:api
+      - name: Lint Web
+        run: yarn lint:web
 
+      # build
       - name: Build Library
         run: yarn build:libs
-
       - name: Build API
         run: yarn build:api
-
-      - name: Build Web Client
+      - name: Build Web
         run: yarn build:web
-
-      - name: Yarn Audit
-        run: yarn npm audit --all
-        continue-on-error: true
