@@ -1114,7 +1114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/theme-tools@npm:2.0.13":
+"@chakra-ui/theme-tools@npm:2.0.13, @chakra-ui/theme-tools@npm:^2.0.13":
   version: 2.0.13
   resolution: "@chakra-ui/theme-tools@npm:2.0.13"
   dependencies:
@@ -1667,6 +1667,7 @@ __metadata:
   resolution: "@lib/themes@workspace:libs/themes"
   dependencies:
     "@chakra-ui/react": ^2.3.2
+    "@chakra-ui/theme-tools": ^2.0.13
     "@emotion/react": ^11.8.1
     "@emotion/styled": ^11.8.1
     "@lib/utility": ^0.0.1
