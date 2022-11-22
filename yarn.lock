@@ -1642,7 +1642,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@lib/stores@workspace:libs/stores":
+"@lib/stores@^0.0.1, @lib/stores@workspace:libs/stores":
   version: 0.0.0-use.local
   resolution: "@lib/stores@workspace:libs/stores"
   dependencies:
@@ -1923,6 +1923,7 @@ __metadata:
     "@joi/date": ^2.1.0
     "@lib/components": ^0.0.1
     "@lib/config": ^0.0.1
+    "@lib/stores": ^0.0.1
     "@types/react": 18.0.15
     "@types/react-dom": ^17.0.2
     eslint-config-next: ^12.0.10

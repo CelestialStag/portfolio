@@ -32,6 +32,7 @@
     "@joi/date": "^2.1.0",
     "@lib/components": "^0.0.1",
     "@lib/config": "^0.0.1",
+    "@lib/stores": "^0.0.1",
     "formik": "^2.2.9",
     "framer-motion": "^6",
     "mobx": "^6.5.0",
