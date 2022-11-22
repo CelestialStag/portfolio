@@ -2,14 +2,22 @@ import { NextPage } from 'next';
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 
-import { Container } from '@lib/components';
+import { Box, Container, Heading, Text } from '@lib/components';
 
 import { WebLayout } from '@components/layout';
 
 const IndexPage: NextPage = () => {
   return (
-    <WebLayout>
-      <Container display="flex" flexGrow={1} textAlign="center"></Container>
+    <WebLayout isCentered>
+      <Container display="flex" flexGrow={1} placeItems="flex-start" placeContent="center" textAlign="center">
+        <Box display="flex" flexDirection="column" placeItems="center" placeContent="center">
+          <Heading>Elias C. Mawa</Heading>
+          <Box>
+            <Text fontSize="xs">Principal Software developer @ Chesney Management Group LTD.</Text>
+            <Text fontSize="xs">Calgary, AB</Text>
+          </Box>
+        </Box>
+      </Container>
     </WebLayout>
   );
 };
