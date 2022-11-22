@@ -1,11 +1,12 @@
 import { FiDownload, FiGithub, FiHeart, FiLinkedin, FiMail } from 'react-icons/fi';
+import { Icon, Tooltip } from '@chakra-ui/react';
+import React, { useMemo } from 'react';
 import { FaDiscord } from 'react-icons/fa';
-import { Icon } from '@chakra-ui/react';
-import React from 'react';
 
 import { Anchor, Box, BoxProps, Span, Text } from '@lib/components';
 
 import { WebFooter, WebHeading, WebNavigation } from '@components/layout';
+import _ from 'lodash';
 
 export type WebLayoutProps = BoxProps;
 
@@ -14,6 +15,15 @@ const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
   const LinkedinLink = 'https://www.linkedin.com/in/emawa';
   const EmailLink = 'mailto:elias@emawa.io';
   const ResumeLink = '/resume/technical-resume-2022.pdf';
+  const discordUser = 'cachet#0001';
+
+  const debouncedCopyToClipboard = useMemo(() => {
+    const copyToClipboard = (data: string) => {
+      navigator.clipboard.writeText(data);
+    };
+    return _.debounce(copyToClipboard, 0);
+  }, []);
+
   return (
     <Box display="flex" flexDir="column" maxW="100vw" minHeight="100vh">
       <Box display="flex" flexDir="column" flexGrow={1} zIndex={0}>
@@ -63,10 +73,12 @@ const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
                 <Span className="hidden-mobile">elias@emawa.io</Span>
               </Anchor>
 
-              <Anchor colorScheme="background">
-                <Icon as={FaDiscord} fontSize={24} />
-                <Span className="visible-mobile">cachet#0001</Span>
-              </Anchor>
+              <Tooltip label="click to copy" aria-label="copy discord username">
+                <Anchor colorScheme="background" onClick={() => debouncedCopyToClipboard(discordUser)}>
+                  <Icon as={FaDiscord} fontSize={24} />
+                  <Span className="visible-mobile">{discordUser}</Span>
+                </Anchor>
+              </Tooltip>
 
               <Anchor href={ResumeLink} colorScheme="background">
                 <Icon as={FiDownload} fontSize={24} />

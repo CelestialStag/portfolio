@@ -18,19 +18,19 @@ const IAnchorComponent = chakra<typeof CLink, AnchorProps>(CLink);
 const IAnchor = (props: AnchorProps, ref: Ref<Element>) => {
   const router = useRouter();
   const { children, href: link, isLoading, isDisabled, isReactive } = props;
-  const onClick = (event) => {
-    if (link && !isDisabled && !isLoading) {
-      router.replace(link, undefined, { shallow: true });
-      if (props.onClick) props.onClick(event);
-    }
-  };
   const [href, setHref] = useState<string | null>(link ?? null);
+  const isDisabledLink = router.asPath == props.href || props.isDisabled;
 
   useEffect(() => {
     if (link) setHref(link);
   }, [link]);
 
-  const isDisabledLink = router.asPath == props.href || props.isDisabled;
+  const onClick = (event) => {
+    if (!isDisabled && !isLoading) {
+      if (link) router.replace(link, undefined, { shallow: true });
+      if (props.onClick) props.onClick(event);
+    }
+  };
 
   return (
     <NLink

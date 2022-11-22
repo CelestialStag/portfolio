@@ -14,11 +14,11 @@ export type WebHeadingProps = BoxProps;
 
 const IWebHeadingComponent: NextPage<WebHeadingProps> = ({ children }: WebHeadingProps) => {
   const mastheadImageList = useMemo(() => [playerFrontIdle, slimeFrontIdle, slimeFrontJump], []);
-  const [imageIndex, setImageIndex] = useState(r_number(mastheadImageList.length));
-  const mastheadImage = useMemo(() => mastheadImageList[imageIndex - 1], [imageIndex, mastheadImageList]);
+  const [imageIndex, setImageIndex] = useState(r_number(mastheadImageList.length) - 1);
+  const mastheadImage = useMemo(() => mastheadImageList[imageIndex], [imageIndex, mastheadImageList]);
 
   const debouncedIncrementImageIndex = useMemo(() => {
-    const incrementImageIndex = () => setImageIndex((imageIndex % mastheadImageList.length) + 1);
+    const incrementImageIndex = () => setImageIndex((imageIndex + 1) % mastheadImageList.length);
     return _.debounce(incrementImageIndex, 0);
   }, [imageIndex, mastheadImageList.length]);
 
