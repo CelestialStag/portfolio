@@ -1,15 +1,15 @@
 import { ThemeConfig, ThemeOverride, extendTheme, withDefaultColorScheme, withDefaultSize } from '@chakra-ui/react';
 
 import { AnchorTheme, BoxTheme, ContainerTheme, HeadingTheme } from './core';
-import { BadgeTheme, ButtonTheme, InputTheme } from './components';
 import { Breakpoints, GlobalStyle } from './config';
+import { ButtonTheme, InputTheme, badgeTheme } from './components';
 import { CheckboxTheme } from './forms';
 
 import { BaseColors, ThemeColors } from './colors';
 
 export const themeConfig: ThemeConfig = {
-  initialColorMode: 'dark',
   useSystemColorMode: false,
+  initialColorMode: 'dark',
 };
 
 export const baseTheme = extendTheme(
@@ -31,15 +31,16 @@ export const baseTheme = extendTheme(
     },
     breakpoints: Breakpoints,
   } as ThemeOverride,
-  withDefaultColorScheme({ colorScheme: 'body' }),
+  withDefaultColorScheme({ colorScheme: 'background' }),
   AnchorTheme,
-  BadgeTheme,
+  badgeTheme,
   ButtonTheme,
   BoxTheme,
   ContainerTheme,
   HeadingTheme,
   InputTheme,
   CheckboxTheme,
+  // withDefaultVariant({ variant: 'profile', components: ['Badge'] }),
   withDefaultSize({ size: 'sm', components: ['Input', 'NumberInput', 'Select'] }),
   withDefaultSize({ size: 'lg', components: ['Heading'] }),
 );

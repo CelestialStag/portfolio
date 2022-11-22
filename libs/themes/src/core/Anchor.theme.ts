@@ -21,7 +21,7 @@ const IAnchorConfig: ComponentStyleConfig = {
   },
   defaultProps: {
     size: 'md',
-    colorScheme: 'lime',
+    colorScheme: 'accent',
   },
 };
 

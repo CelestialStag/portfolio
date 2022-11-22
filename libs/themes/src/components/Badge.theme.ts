@@ -1,29 +1,31 @@
-import { ComponentStyleConfig, ThemeComponents, ThemeOverride, extendTheme } from '@chakra-ui/react';
-import { mode } from '@chakra-ui/theme-tools';
+import {
+  ComponentStyleConfig,
+  ThemeComponents,
+  ThemeOverride,
+  // defineStyle,
+  defineStyleConfig,
+  extendTheme,
+} from '@chakra-ui/react';
 
-const IBadgeConfig: ComponentStyleConfig = {
-  baseStyle: (props) => {
-    const { colorScheme, theme } = props;
-    return {
-      bgColor: mode(theme.colors[colorScheme]?.[600], theme.colors[colorScheme]?.[400])(props),
-      borderRadius: 'sm',
-    };
-  },
+const badgeStyle: ComponentStyleConfig = defineStyleConfig({
   sizes: {
     xs: {
       fontSize: 8,
     },
   },
-};
+  defaultProps: {
+    colorScheme: 'emerald',
+  },
+});
 
-const IBadgeTheme: ThemeOverride = {
+const badgeThemeOverride: ThemeOverride = {
   components: {
-    Badge: IBadgeConfig,
+    Badge: badgeStyle,
   },
 };
 
-type TBadgeTheme = typeof IBadgeTheme;
+type IBadgeTheme = typeof badgeThemeOverride;
 
-export const BadgeTheme = <TBadgeTheme>extendTheme(IBadgeTheme);
+export const badgeTheme = <IBadgeTheme>extendTheme(badgeThemeOverride);
 
-export const BadgeConfig = (BadgeTheme.components as ThemeComponents).Badge;
+export const badgeConfig = (badgeTheme.components as ThemeComponents).Badge;
