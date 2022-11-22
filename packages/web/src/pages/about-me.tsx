@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 
-import { Box, Container, Span, Text } from '@lib/components';
+import { Box, Container, Heading, Span, Text } from '@lib/components';
 
 import { WebLayout } from '@components/layout';
 
@@ -13,6 +13,20 @@ const AboutMePage: NextPage = () => {
     <WebLayout>
       <Container display="flex" flexGrow={1} textAlign="center">
         <Box display="flex" flexDirection="column" flexGrow={1} placeItems="center" gap={4}>
+          <Box display="flex" flexDirection="column" placeItems="center" placeContent="center">
+            <Heading>Elias C. Mawa</Heading>
+            <Box>
+              <Text fontSize="xs">Principal Software developer @ Chesney Management Group LTD.</Text>
+              <Text fontSize="xs">Calgary, AB</Text>
+            </Box>
+          </Box>
+
+          <Box display="flex" gap={2}>
+            <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
+            <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
+            <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
+          </Box>
+
           <Box display="flex" flexDirection="column" placeItems="center" gap={4}>
             <Box display="flex" placeItems="center" placeContent="center" flexWrap="wrap" gap={2} maxW={680}>
               <Badge colorScheme="emerald">JS/TS</Badge>
@@ -33,7 +47,7 @@ const AboutMePage: NextPage = () => {
               <Badge colorScheme="violet">GCP/AWS</Badge>
             </Box>
 
-            <Box display="flex" gap={2}>
+            {/* <Box display="flex" gap={2}>
               <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
               <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
               <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />
@@ -42,7 +56,7 @@ const AboutMePage: NextPage = () => {
             <Box>
               <Text fontSize="xs">Principal Software developer @ Chesney Management Group LTD.</Text>
               <Text fontSize="xs">Calgary, AB</Text>
-            </Box>
+            </Box> */}
 
             <Box display="flex" gap={2}>
               <Icon as={FiCircle} fontSize={8} stroke="background.400" fill="background.400" />

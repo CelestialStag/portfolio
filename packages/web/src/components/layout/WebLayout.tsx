@@ -8,9 +8,11 @@ import { Anchor, Box, BoxProps, Span, Text } from '@lib/components';
 import { WebFooter, WebHeading, WebNavigation } from '@components/layout';
 import _ from 'lodash';
 
-export type WebLayoutProps = BoxProps;
+export type WebLayoutProps = BoxProps & {
+  isCentered?: boolean;
+};
 
-const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
+const IWebLayoutComponent = ({ children, isCentered }: WebLayoutProps) => {
   const GithubLink = 'https://github.com/theluckyegg/portfolio';
   const LinkedinLink = 'https://www.linkedin.com/in/emawa';
   const EmailLink = 'mailto:elias@emawa.io';
@@ -28,7 +30,7 @@ const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
     <Box display="flex" flexDir="column" maxW="100vw" minHeight="100vh">
       <Box display="flex" flexDir="column" flexGrow={1} zIndex={0}>
         <Box display="flex" flexDirection="column" flex={1} placeItems="center" placeContent="center">
-          <WebHeading>
+          <WebHeading flex={1}>
             <Box
               sx={{
                 display: 'flex',
