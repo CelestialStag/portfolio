@@ -56,11 +56,11 @@ jobs:
       - name: Build Library
         run: yarn build:libs
 
-      - name: 'Database: migration'
-        run: yarn db:migrate
+      # - name: 'Database: migration'
+      #   run: yarn db:migrate
 
-      - name: 'Database: reset'
-        run: yarn db:reset
+      # - name: 'Database: reset'
+      #   run: yarn db:reset
 
-      - name: 'Database: seed'
-        run: yarn db:seed
+      # - name: 'Database: seed'
+      #   run: yarn db:seed
