@@ -12,7 +12,7 @@ export type WebLayoutProps = BoxProps & {
   isCentered?: boolean;
 };
 
-const IWebLayoutComponent = ({ children, isCentered }: WebLayoutProps) => {
+const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
   const GithubLink = 'https://github.com/theluckyegg/portfolio';
   const LinkedinLink = 'https://www.linkedin.com/in/emawa';
   const EmailLink = 'mailto:elias@emawa.io';

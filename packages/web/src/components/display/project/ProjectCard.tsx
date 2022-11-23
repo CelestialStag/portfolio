@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import React from 'react';
 
 import { Anchor, Box, BoxProps, Heading, Span, Text } from '@lib/components';
+import { Divider, Tooltip } from '@chakra-ui/react';
 
 export type ProjectCardProps = BoxProps & {
   image?: string | StaticImageData;
@@ -12,6 +13,7 @@ export type ProjectCardProps = BoxProps & {
   alt?: string;
   liveLink?: string;
   gitLink?: string | string[];
+  isDisabled?: boolean;
 };
 
 const IProjectCardComponent: NextPage<ProjectCardProps> = ({
@@ -22,20 +24,25 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
   alt,
   liveLink,
   gitLink,
+  isDisabled,
   onClick,
 }: ProjectCardProps) => {
   return (
     <Box
       display="flex"
       flexDirection="row"
-      // gap={4}
+      flex={1}
+      flexGrow={1}
       textAlign="left"
       background="background.600"
-      // shadow="lg"
       borderRadius="md"
       overflow="hidden"
       sx={{
         shadow: 'md',
+        flexDirection: 'column',
+        '@media screen and (min-width: 680px)': {
+          flexDirection: 'row',
+        },
       }}
       _hover={{
         shadow: 'xl',
@@ -43,6 +50,8 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
         transitionDuration: '0.4s',
         zIndex: 4,
       }}
+      maxH="auto"
+      minW="auto"
     >
       {image && (
         <Box
@@ -55,8 +64,16 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
           bgColor={imageColor || 'background.400'}
           onClick={onClick}
           _hover={{ cursor: onClick ? 'pointer' : 'cursor' }}
+          sx={{
+            minH: 32,
+          }}
         >
-          <Box minW={16}>
+          <Box
+            flexGrow={0.2}
+            sx={{
+              minW: 16,
+            }}
+          >
             <Image src={image} alt={alt} layout="responsive" />
           </Box>
           {/* <Box minW={32} minH={32} bgColor="background.200" borderRadius="full"></Box> */}
@@ -64,7 +81,7 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
       )}
       <Box flexGrow={1} px={4} py={4}>
         <Box display="flex" flexDirection="column" gap={2}>
-          <Box display="flex" flexDirection="column">
+          <Box display="flex" flexDirection="column" gap={2}>
             {title && (
               <Box>
                 <Heading size="lg">
@@ -80,19 +97,37 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
               )}
             </Box>
           </Box>
-          <Box display="flex" flexDirection="column" gap={0} fontSize="xs">
+          {(liveLink || gitLink) && <Divider borderColor="background.200" />}
+          <Box
+            display="flex"
+            flexDirection="column"
+            sx={{
+              fontSize: 'xs',
+              '@media screen and (min-width: 680px)': {
+                fontSize: 'sm',
+              },
+            }}
+          >
             {liveLink && (
               <Box display="flex" gap={2}>
                 <Span>website</Span>
-                <Anchor href={`https://${liveLink}`}>{liveLink}</Anchor>
+                <Tooltip
+                  label="Currently re-deploying to new server..."
+                  aria-label="err message"
+                  isDisabled={!isDisabled}
+                >
+                  <Anchor href={`https://${liveLink}`} isResponsive isDisabled={isDisabled}>
+                    {liveLink}
+                  </Anchor>
+                </Tooltip>
               </Box>
             )}
             {(typeof gitLink === 'object' && gitLink.length && (
-              <Box display="flex" gap={2}>
+              <Box display="flex" flexDirection="column">
                 <Span>github links</Span>
                 <Box display="flex" flexDirection="column">
                   {gitLink.map((x) => (
-                    <Anchor key={x} href={`https://${x}`}>
+                    <Anchor key={x} href={`https://${x}`} isResponsive>
                       {x}
                     </Anchor>
                   ))}
@@ -102,7 +137,9 @@ const IProjectCardComponent: NextPage<ProjectCardProps> = ({
               (typeof gitLink === 'string' && (
                 <Box display="flex" gap={2}>
                   <Span>github</Span>
-                  <Anchor href={`https://${gitLink}`}>{gitLink}</Anchor>
+                  <Anchor href={`https://${gitLink}`} isResponsive>
+                    {gitLink}
+                  </Anchor>
                 </Box>
               ))}
           </Box>

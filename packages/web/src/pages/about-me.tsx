@@ -28,7 +28,23 @@ const AboutMePage: NextPage = () => {
           </Box>
 
           <Box display="flex" flexDirection="column" placeItems="center" gap={4}>
-            <Box display="flex" placeItems="center" placeContent="center" flexWrap="wrap" gap={2} maxW={680}>
+            <Box
+              display="flex"
+              placeItems="center"
+              placeContent="center"
+              flexWrap="wrap"
+              gap={2}
+              maxW={680}
+              sx={{
+                span: {
+                  '&:hover': {
+                    cursor: 'pointer',
+                    transform: 'translate(-1px, -1px)',
+                    transitionDuration: '0.4s',
+                  },
+                },
+              }}
+            >
               <Badge colorScheme="emerald">JS/TS</Badge>
               <Badge colorScheme="emerald">HTML/CSS/SCSS</Badge>
               <Badge colorScheme="emerald">C/C++</Badge>

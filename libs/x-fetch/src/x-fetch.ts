@@ -47,7 +47,7 @@ export class XFetch {
   private readonly api_url: string;
 
   constructor(private readonly config: XFetchConfig) {
-    this.protocol = config.protocol ?? 'https';
+    this.protocol = config.protocol ?? 'http';
 
     this.base_url = config.base_url;
     this.base_path = config.base_path;
@@ -102,7 +102,7 @@ export class XFetch {
   };
 
   post = async <T, K = unknown, R = unknown>(
-    path: string,
+    path = '',
     { headers, parameters, body, formData }: PostParams<K> = {},
   ): Promise<
     { ok: true; data: T; error: null } | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
@@ -144,7 +144,7 @@ export class XFetch {
   };
 
   public get = async <T, K = unknown, R = unknown>(
-    path: string,
+    path = '',
     { headers, parameters }: GetParams<K> = {},
   ): Promise<
     { ok: true; data: T; error: null } | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
@@ -185,7 +185,7 @@ export class XFetch {
   };
 
   patch = async <T, K = unknown, R = unknown>(
-    path: string,
+    path = '',
     { headers, parameters, body, formData }: PostParams<K> = {},
   ): Promise<
     { ok: true; data: T; error: null } | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }
@@ -226,7 +226,7 @@ export class XFetch {
   };
 
   delete = async <T, K = unknown, R = unknown>(
-    path: string,
+    path = '',
     { headers, parameters }: GetParams<K> = {},
   ): Promise<
     { ok: true; data: T; error: null } | { ok: false; data: null | T | R; error: string; status: HTTPStatusCodes }

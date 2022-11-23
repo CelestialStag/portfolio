@@ -33,11 +33,11 @@ const ProjectsPage: NextPage = () => {
     <WebLayout>
       <Container display="flex" flexGrow={1} textAlign="center">
         <Box display="flex" flexDirection="column" flexGrow={1} placeItems="center" gap={4}>
-          <Box display="flex" flexDirection="column" placeItems="center" gap={4}>
-            <Box>
-              <Heading size="2xl">Projects</Heading>
-            </Box>
+          <Box display="flex" flexDirection="column" placeItems="stretch" gap={4}>
             <Box display="flex" flexDirection="column" gap={4}>
+              <Box>
+                <Heading size="2xl">Projects</Heading>
+              </Box>
               <ProjectCard
                 image={mastheadImage}
                 onClick={debouncedIncrementImageIndex}
@@ -54,6 +54,7 @@ const ProjectsPage: NextPage = () => {
                 description="A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="shrymp.co"
                 gitLink={['github.com/theluckyegg/shrymp-web', 'github.com/theluckyegg/shrymp-server']}
+                isDisabled
               />
               <ProjectCard
                 image={stagLogo}
@@ -62,6 +63,7 @@ const ProjectsPage: NextPage = () => {
                 description="A mobile friendly CSS framework based on flexbox. The framework conforms to modern CSS3 and HTML5 standards. Written in pure SASS."
                 liveLink="stagcss.dev"
                 gitLink="github.com/theluckyegg/stag"
+                isDisabled
               />
               <ProjectCard
                 image={kurisuLogo}
@@ -77,6 +79,7 @@ const ProjectsPage: NextPage = () => {
                 description="The predecessor to 'pndo.me'.A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="gobox.dev"
                 gitLink="github.com/theluckyegg/gobox-server-v1"
+                isDisabled
               />
               <ProjectCard
                 image={pndomeLogo}
@@ -85,6 +88,21 @@ const ProjectsPage: NextPage = () => {
                 description="The successor to 'gobox'. The webapp implements an improved user interface, user accounts and access control."
                 liveLink="pndo.me"
                 gitLink="github.com/theluckyegg/pndome"
+                isDisabled
+              />
+            </Box>
+            <Box display="flex" flexDirection="column" gap={4}>
+              <Box>
+                <Heading size="2xl">School Projects</Heading>
+              </Box>
+              <ProjectCard
+                image={mastheadImage}
+                onClick={debouncedIncrementImageIndex}
+                imageColor={imageIndex === 0 ? '#7b5630' : '#a4ff4c'}
+                title="chess"
+                description="Chess program developed in Software Engineering 320. Developed with a team of my peers. The program implements a chess engine and a GUI. Built in Java using the Swing library. My work was towards the chess engine, computer AI engine, and UI Design images/icons). With respect to my peers source code is available on request."
+                // liveLink="mawa.dev"
+                // gitLink="github.com/theluckyegg/portfolio"
               />
             </Box>
           </Box>
