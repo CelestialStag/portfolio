@@ -53,6 +53,7 @@ const IAnchor = (props: AnchorProps, ref: Ref<Element>) => {
         }
         opacity={props.opacity ?? ((isResponsive && (isDisabledLink || !href)) || isLoading ? 0.4 : 1)}
         styleConfig={AnchorConfig}
+        color={props.color ?? router.asPath === props.href ? 'alt.500' : undefined}
       >
         {children}
       </IAnchorComponent>

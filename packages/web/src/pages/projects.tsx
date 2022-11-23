@@ -96,11 +96,20 @@ const ProjectsPage: NextPage = () => {
                 <Heading size="2xl">School Projects</Heading>
               </Box>
               <ProjectCard
-                image={mastheadImage}
+                // image={mastheadImage}
                 onClick={debouncedIncrementImageIndex}
-                imageColor={imageIndex === 0 ? '#7b5630' : '#a4ff4c'}
-                title="chess"
-                description="Chess program developed in Software Engineering 320. Developed with a team of my peers. The program implements a chess engine and a GUI. Built in Java using the Swing library. My work was towards the chess engine, computer AI engine, and UI Design images/icons). With respect to my peers source code is available on request."
+                // imageColor={imageIndex === 0 ? '#7b5630' : '#a4ff4c'}
+                title="Software Engineering: chess"
+                description="Chess program developed in Software Engineering 320. Developed with a team of my peers. The program was built using Java and implements a chess engine and a GUI built using the Swing library. My work was towards the chess engine, computer AI engine, and UI Design images/icons)."
+                // liveLink="mawa.dev"
+                // gitLink="github.com/theluckyegg/portfolio"
+              />
+              <ProjectCard
+                // image={mastheadImage}
+                onClick={debouncedIncrementImageIndex}
+                // imageColor={imageIndex === 0 ? '#7b5630' : '#a4ff4c'}
+                title="Algorithm Analysis: paint"
+                description="Paint program developed for Algorithm Analysis 370. The program was developed in c++ utilizing OpenGL and GLUT. The program implements a simple toolbar, pixel brush and bucket tool. The program demonstrates the the flood fill algorithm with color tolerance on loaded or painted images. The process of the flood fill algorithm may be viewed with a speed toggle."
                 // liveLink="mawa.dev"
                 // gitLink="github.com/theluckyegg/portfolio"
               />

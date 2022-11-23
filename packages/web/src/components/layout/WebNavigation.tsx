@@ -1,18 +1,12 @@
 import { Divider } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
-import { useRouter } from 'next/router';
 
 import { Anchor, Box, BoxProps, Span } from '@lib/components';
 
 export type WebNavigationProps = BoxProps;
 
 const IWebNavigationComponent: NextPage<WebNavigationProps> = ({ children }: WebNavigationProps) => {
-  const { route, pathname } = useRouter();
-
-  console.log(route);
-  console.log(pathname);
-
   return (
     <Box display="flex" flexDirection="column" placeItems="center" gap={2}>
       <Box
