@@ -13,10 +13,10 @@ export type WebLayoutProps = BoxProps & {
 };
 
 const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
-  const GithubLink = 'https://github.com/theluckyegg/portfolio';
+  const GithubLink = 'https://github.com/CelestialStag/portfolio';
   const LinkedinLink = 'https://www.linkedin.com/in/emawa';
   const EmailLink = 'mailto:elias@emawa.io';
-  const ResumeLink = '/resume/technical-resume-2022.pdf';
+  //  const ResumeLink = '/resume/technical-resume-2022.pdf';
   const discordUser = 'cachet#0001';
 
   const debouncedCopyToClipboard = useMemo(() => {
@@ -82,10 +82,10 @@ const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
                 </Anchor>
               </Tooltip>
 
-              <Anchor href={ResumeLink} colorScheme="background">
+              {/*<Anchor href={ResumeLink} colorScheme="background">
                 <Icon as={FiDownload} fontSize={24} />
                 <Span className="hidden-mobile">resume</Span>
-              </Anchor>
+              </Anchor>*/}
             </Box>
             <WebNavigation />
           </WebHeading>
