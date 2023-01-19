@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "isolatedModules": false,
 
+    /* jsx options */
     "jsx": "preserve",
     "checkJs": false,
 
@@ -23,7 +24,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
 
-    "types": ["lodash", "node", "jest"],
+    "types": ["lodash", "@types/node", "@types/jest"],
     "baseUrl": "./packages"
   },
   "exclude": ["node_modules/", "**/spec.ts"]

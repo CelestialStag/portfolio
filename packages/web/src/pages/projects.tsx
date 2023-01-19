@@ -54,7 +54,7 @@ const ProjectsPage: NextPage = () => {
                 description="A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="shrymp.co"
                 gitLink={['github.com/CelestialStag/shrymp-web', 'github.com/CelestialStag/shrymp-server']}
-                isDisabled
+                // isDisabled
               />
               <ProjectCard
                 image={stagLogo}
@@ -62,7 +62,7 @@ const ProjectsPage: NextPage = () => {
                 title="stagcss"
                 description="A mobile friendly CSS framework based on flexbox. The framework conforms to modern CSS3 and HTML5 standards. Written in pure SASS."
                 liveLink="stagcss.dev"
-                gitLink="github.com/CelestialStag/stag"
+                gitLink="github.com/CelestialStag/stagcss"
                 isDisabled
               />
               <ProjectCard
@@ -79,7 +79,7 @@ const ProjectsPage: NextPage = () => {
                 description="The predecessor to 'pndo.me'.A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="gobox.dev"
                 gitLink="github.com/CelestialStag/gobox-server-v1"
-                isDisabled
+                // isDisabled
               />
               <ProjectCard
                 image={pndomeLogo}
@@ -88,7 +88,7 @@ const ProjectsPage: NextPage = () => {
                 description="The successor to 'gobox'. The webapp implements an improved user interface, user accounts and access control."
                 liveLink="pndo.me"
                 gitLink="github.com/CelestialStag/pndome"
-                isDisabled
+                // isDisabled
               />
             </Box>
             <Box display="flex" flexDirection="column" gap={4}>
