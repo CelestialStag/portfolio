@@ -5,7 +5,7 @@
   "packageManager": "yarn@3.1.1",
   "license": "GPL-3.0",
   "author": "First-name Last-name <user@example.com>",
-  "homepage": "https://github.com/theluckyegg/pndome#readme",
+  "homepage": "https://github.com/celestialstag/pndome#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<username>/<repo>.git"

@@ -13,7 +13,7 @@
 #### **Step 2 - Clone Repository**
 
 ```bash
-git clone git@github.com:theluckyegg/next-koa-monorepo.git
+git clone git@github.com:celestialstag/next-koa-monorepo.git
 ```
 
 ### Compiling

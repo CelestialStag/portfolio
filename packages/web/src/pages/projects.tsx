@@ -45,7 +45,7 @@ const ProjectsPage: NextPage = () => {
                 title="portfolio"
                 description="My portfolio website, nothing much other than showcasing some of my work (Click on the header image to change it!)."
                 liveLink="mawa.dev"
-                gitLink="github.com/CelestialStag/portfolio"
+                gitLink="github.com/celestialstag/portfolio"
               />
               <ProjectCard
                 image={shrympLogo}
@@ -53,7 +53,7 @@ const ProjectsPage: NextPage = () => {
                 title="shrymp.co"
                 description="A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="shrymp.co"
-                gitLink={['github.com/CelestialStag/shrymp-web', 'github.com/CelestialStag/shrymp-server']}
+                gitLink={['github.com/celestialstag/shrymp-web', 'github.com/celestialstag/shrymp-server']}
                 // isDisabled
               />
               <ProjectCard
@@ -62,7 +62,7 @@ const ProjectsPage: NextPage = () => {
                 title="stagcss"
                 description="A mobile friendly CSS framework based on flexbox. The framework conforms to modern CSS3 and HTML5 standards. Written in pure SASS."
                 liveLink="stagcss.dev"
-                gitLink="github.com/CelestialStag/stagcss"
+                gitLink="github.com/celestialstag/stagcss"
                 isDisabled
               />
               <ProjectCard
@@ -78,7 +78,7 @@ const ProjectsPage: NextPage = () => {
                 title="gobox"
                 description="The predecessor to 'pndo.me'.A quick and simple link shortener. Creates easy to read custom or random sharable links."
                 liveLink="gobox.dev"
-                gitLink="github.com/CelestialStag/gobox-server-v1"
+                gitLink="github.com/celestialstag/gobox-server-v1"
                 // isDisabled
               />
               <ProjectCard
@@ -87,7 +87,7 @@ const ProjectsPage: NextPage = () => {
                 title="pndo.me"
                 description="The successor to 'gobox'. The webapp implements an improved user interface, user accounts and access control."
                 liveLink="pndo.me"
-                gitLink="github.com/CelestialStag/pndome"
+                gitLink="github.com/celestialstag/pndome"
                 // isDisabled
               />
             </Box>
@@ -102,7 +102,7 @@ const ProjectsPage: NextPage = () => {
                 title="Software Engineering: chess"
                 description="Chess program developed in Software Engineering 320. Developed with a team of my peers. The program was built using Java and implements a chess engine and a GUI built using the Swing library. My work was towards the chess engine, computer AI engine, and UI Design images/icons)."
                 // liveLink="mawa.dev"
-                // gitLink="github.com/CelestialStag/portfolio"
+                // gitLink="github.com/celestialstag/portfolio"
               />
               <ProjectCard
                 // image={mastheadImage}
@@ -111,7 +111,7 @@ const ProjectsPage: NextPage = () => {
                 title="Algorithm Analysis: paint"
                 description="Paint program developed for Algorithm Analysis 370. The program was developed in c++ utilizing OpenGL and GLUT. The program implements a simple toolbar, pixel brush and bucket tool. The program demonstrates the the flood fill algorithm with color tolerance on loaded or painted images. The process of the flood fill algorithm may be viewed with a speed toggle."
                 // liveLink="mawa.dev"
-                // gitLink="github.com/CelestialStag/portfolio"
+                // gitLink="github.com/celestialstag/portfolio"
               />
             </Box>
           </Box>

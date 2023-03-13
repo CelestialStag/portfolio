@@ -5,13 +5,13 @@
   "description": "back-end for my portfolio",
   "author": "Elias Mawa <elias@emawa.io>",
   "private": true,
-  "homepage": "https://github.com/theluckyegg/portfolio",
+  "homepage": "https://github.com/celestialstag/portfolio",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theluckyegg/portfolio.git"
+    "url": "git+https://github.com/celestialstag/portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/theluckyegg/portfolio/issues"
+    "url": "https://github.com/celestialstag/portfolio/issues"
   },
   "scripts": {
     "test": "jest",

@@ -13,11 +13,11 @@ export type WebLayoutProps = BoxProps & {
 };
 
 const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
-  const GithubLink = 'https://github.com/CelestialStag/portfolio';
+  const GithubLink = 'https://github.com/celestialstag/portfolio';
   const LinkedinLink = 'https://www.linkedin.com/in/emawa';
   const EmailLink = 'mailto:elias@emawa.io';
   //  const ResumeLink = '/resume/technical-resume-2022.pdf';
-  const discordUser = 'cachet#0001';
+  const discordUser = 'elias!#1001';
 
   const debouncedCopyToClipboard = useMemo(() => {
     const copyToClipboard = (data: string) => {
@@ -62,7 +62,7 @@ const IWebLayoutComponent = ({ children }: WebLayoutProps) => {
             >
               <Anchor href={GithubLink} colorScheme="background">
                 <Icon as={FiGithub} fontSize={24} />
-                <Span className="hidden-mobile">theluckyegg</Span>
+                <Span className="hidden-mobile">celestialstag</Span>
               </Anchor>
 
               <Anchor href={LinkedinLink} colorScheme="background">
