@@ -13,7 +13,7 @@ const IndexPage: NextPage = () => {
         <Box display="flex" flexDirection="column" placeItems="center" placeContent="center">
           <Heading>Elias C. Mawa</Heading>
           <Box>
-            <Text fontSize="xs">Principal Software developer @ Chesney Management Group LTD.</Text>
+            <!-- <Text fontSize="xs">Principal Software developer @ Chesney Management Group LTD.</Text> -->
             <Text fontSize="xs">Calgary, AB</Text>
           </Box>
         </Box>
